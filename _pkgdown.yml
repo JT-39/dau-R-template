@@ -1,0 +1,4 @@
+pkgdurl: ~
+template:
+  bootstrap: 5
+

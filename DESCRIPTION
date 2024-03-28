@@ -1,19 +1,20 @@
-Package: analysistemplates
-Title: Creates a standard folder structure for scientific data analysis in RStudio
+Package: dauRtemplate
+Title: Creates a standard folder structure for DAU projects in RStudio
 Version: 0.1.0
 Authors@R: 
-    c(person(given = "Jonas",
-             family = "Hagenberg",
+    c(person(given = "Jake",
+             family = "Tufts",
              role = c("aut", "cre"),
-             email = "jonas_hagenberg@psych.mpg.de",
-             comment = c(ORCID = "0000-0002-1849-1106")),
-      person(given = "Max Planck Institute of Psychiatry",
+             email = "jake.tufts@education.gov.uk",
+             comment = c(ORCID = "0009-0008-3798-8805")),
+      person(given = "Ben",
+             family = "Smith",
              role = "cph"))
 Description: This package provides an RStudio template that starts a new RStudio
-  project with a standard folder structure for scientific data analysis.
+  project with a standard folder structure for DAU analysis and package projects.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.1
+RoxygenNote: 7.3.1
 Suggests: 
     renv

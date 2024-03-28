@@ -1,0 +1,16 @@
+Binding: dau_proj_template
+Title: DAU project template
+Subtitle: A template for DAU projects (currently supporting general anlysis and packages).
+OpenFiles: README.md
+
+Parameter: include_structure_for_pkg
+Widget: CheckboxInput
+Label: Include folders and files required to build a R package (recommended).
+Default: Off
+Position: left
+
+Parameter: include_github_gitignore
+Widget: CheckboxInput
+Label: Create a .gitignore file for GitHub
+Default: Off
+Position: left

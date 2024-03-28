@@ -10,12 +10,12 @@ start a new project in RStudio, this package provides the standard folder struct
 directly in your code editor. Also, it can help you improving reproducibility by
 using git and `renv`.
 
-![folder structure of the template](tools/overview_folder_structure.png)
+![folder structure of the template](man/figures/overview_folder_structure.png)
 
 ## Installation
 
 ``` r
-remotes::install_github("jonas-hag/analysistemplates")
+remotes::install_github("JT-39/dau-R-template")
 ```
 
 ## Usage
@@ -26,7 +26,7 @@ To create a new project with the folder structure shown below, follow these step
 2.  Restart RStudio
 3.  When creating a new RStudio project with the "New directory" option, choose "Standard analysis template"
 
-    ![RStudio Project Wizard showing the "Standard analysis template" option](tools/project_wizard_with_template.png)
+    ![RStudio Project Wizard showing the "Standard analysis template" option](man/figures/project_wizard_with_template.png)
 
 4.  During initialization you can select if a folder called `06_Analysis_for_publication` is included (check "Include Analysis for publication folder")
 5.  You can select if you want to generate a `.gitignore` file (check "Create a .gitignore file")
@@ -38,27 +38,30 @@ To create a new project with the folder structure shown below, follow these step
 A new project contains the following folder structure:
 
 ```
-|-- 01_Data
+|-- Data
 |   |-- 01_Raw
 |   `-- 02_Clean
-|-- 02_Analysis
-|   |-- 01_Scripts
-|   |-- 02_Results
-|   |-- 03_Figures
-|   `-- 04_Tables
-|-- 03_Manuscript
+|   R
+|   |-- src
+|   |   |-- fun_load_data.R
+|   |   |-- fun_helpers.R
+|   |   |-- fun_transform_data.R
+|-- Analysis
+|   |-- analysis.Rmd
+|   |-- analysis.qmd
+|-- Documentation
 |   |-- 01_Text
 |   `-- 02_Final_figures
-|-- 04_Presentation
-|-- 05_Misc
-|-- 06_Analysis_for_publication <-- optional
-|   |-- 01_Scripts              <-- optional
-|   |-- 02_Results              <-- optional
-|   |-- 03_Figures              <-- optional
-|   `-- 04_Tables               <-- optional
+|-- Outputs
+|   |-- 01_Results              
+|   |-- 02_Figures              
+|   `-- 03_Tables    
+|-- Misc
+|   |-- Public              
+|   |-- Priv
 |-- README.md
-|-- .gitignore                  <-- optional
-|-- renv                        <-- optional
+|-- .gitignore                  
+|-- renv                        
 ```
 ## Planned features
 
