@@ -15,7 +15,7 @@ using git and `renv`.
 ## Installation
 
 ``` r
-remotes::install_github("JT-39/dau-R-template")
+remotes::install_github("JT-39/dau-R-template-ext")
 ```
 
 ## Usage

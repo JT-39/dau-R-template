@@ -9,7 +9,7 @@
 #' @importFrom utils installed.packages
 #' @importFrom usethis create_package use_test
 #' @export
-standard_analysis <- function(
+dau_proj_template <- function(
     path,
     include_structure_for_pkg,
     include_github_gitignore,
@@ -51,7 +51,7 @@ standard_analysis <- function(
   file.create(paste0(path, "/Analysis/analysis.Rmd"))
   file.create(paste0(path, "/Analysis/analysis.qmd"))
   
-  usethis::use_test()
+  # usethis::use_test()
   
   dir.create(paste0(path, "/Documentation"))
   dir.create(paste0(path, "/Documentation/01_Text"))
