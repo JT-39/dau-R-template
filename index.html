@@ -53,9 +53,10 @@
 </nav><div class="container template-home">
 <div class="row">
   <main id="main" class="col-md-9"><div class="section level1">
-<div class="page-header"><h1 id="the-analysistemplates-package">The analysistemplates package<a class="anchor" aria-label="anchor" href="#the-analysistemplates-package"></a>
+<div class="page-header"><h1 id="the-daurtemplate-package">The dauRtemplate package<a class="anchor" aria-label="anchor" href="#the-daurtemplate-package"></a>
 </h1></div>
-<p>The RStudio projects of your colleagues all have a different structure? It is difficult to navigate and understand others’ projects? Or even your own project from a few months/years ago? Therefore, it is useful if you all agree on a standard folder structure for your analysis. Templates can help to enforce this. Currently, this package provides one standard data analysis template for RStudio projects geared towards scientific use cases. Whenever you start a new project in RStudio, this package provides the standard folder structure directly in your code editor. Also, it can help you improving reproducibility by using git and <code>renv</code>.</p>
+<p>The RStudio projects of your colleagues all have a different structure? It is difficult to navigate and understand others’ projects? Or even your own project from a few months/years ago? Therefore, it is useful if you all agree on a standard folder structure for your analysis. Templates can help to enforce this.</p>
+<p>This package provides one standard project folder structure template for R projects geared towards DAU analysis use cases. Whenever you start a new project in RStudio, this package provides the standard folder structure directly in your code editor. Also, it can help you improving reproducibility by using git and <code>renv</code>.</p>
 <div class="float">
 <img src="reference/figures/overview_folder_structure.png" alt="folder structure of the template"><div class="figcaption">folder structure of the template</div>
 </div>
@@ -73,64 +74,74 @@
 <li><p>Install the package</p></li>
 <li><p>Restart RStudio</p></li>
 <li>
-<p>When creating a new RStudio project with the “New directory” option, choose “Standard analysis template”</p>
+<p>When creating a new RStudio project with the “New directory” option, choose “DAU project template”</p>
 <div class="float">
 <img src="reference/figures/project_wizard_with_template.png" alt="RStudio Project Wizard showing the “Standard analysis template” option"><div class="figcaption">RStudio Project Wizard showing the “Standard analysis template” option</div>
 </div>
 </li>
-<li><p>During initialization you can select if a folder called <code>06_Analysis_for_publication</code> is included (check “Include Analysis for publication folder”)</p></li>
-<li><p>You can select if you want to generate a <code>.gitignore</code> file (check “Create a .gitignore file”)</p></li>
-<li><p>You can select if you want to use <code>renv</code> (check “Use renv with this project”)</p></li>
-<li><p>Once you’ve created the project, you will be provided with the instructions how to create a git repository for your project and connect to github/gitlab</p></li>
+<li><p>During initialization you can select if you want to include a package structure (check “Include folders and files required to build a R package (recommended).”)</p></li>
+<li><p>You can select if you want to generate a GitHub suitable <code>.gitignore</code> file (check “Create a .gitignore file for GitHub”)</p></li>
+<li><p>Once you’ve created the project, you will be provided with the instructions how to create a git repository for your project and connect to GitHub/Azure DevOps.</p></li>
 </ol>
 </div>
 <div class="section level2">
 <h2 id="template-overview">Template overview<a class="anchor" aria-label="anchor" href="#template-overview"></a>
 </h2>
 <p>A new project contains the following folder structure:</p>
-<pre><code>|-- Data
+<pre><code>|-- 01_Data
 |   |-- 01_Raw
 |   `-- 02_Clean
-|   R
+|-- R
+|   |-- load_data.R
+|   |-- helpers.R
 |   |-- src
-|   |   |-- fun_load_data.R
-|   |   |-- fun_helpers.R
-|   |   |-- fun_transform_data.R
-|-- Analysis
+|-- tests
+|   |-- testthat.R
+|   |-- testthat
+|   |   |-- test-load_data.R
+|   |   |-- test-helpers.R
+|-- 02_Analysis
 |   |-- analysis.Rmd
 |   |-- analysis.qmd
-|-- Documentation
-|   |-- 01_Text
-|   `-- 02_Final_figures
-|-- Outputs
-|   |-- 01_Results              
-|   |-- 02_Figures              
-|   `-- 03_Tables    
-|-- Misc
-|   |-- Public              
-|   |-- Priv
+|-- 03_Documentation
+|   |-- 01_text
+|   `-- 02_figures
+|-- 04_Outputs
+|   |-- 01_results              
+|   |-- 02_figures              
+|   `-- 03_tables    
+|-- 05_Misc
+|   |-- 01_public              
+|   |-- 02_priv
 |-- README.md
-|-- .gitignore                  
+|-- proj_name.Rproj
+|-- .gitignore
+|-- .Rprofile
 |-- renv                        </code></pre>
 </div>
 <div class="section level2">
 <h2 id="planned-features">Planned features<a class="anchor" aria-label="anchor" href="#planned-features"></a>
 </h2>
 <ul>
-<li>better integration with git/github</li>
+<li>Collaboration with DAU team to agree on folder and file structure.</li>
+<li>Further testing and documentation of the package.</li>
+<li>More support for a package folder structure.</li>
+<li>Integration with QA (automated QA document).</li>
+<li>Support for Shiny apps.</li>
 </ul>
 </div>
 <div class="section level2">
-<h2 id="i-want-a-different-template">I want a different template<a class="anchor" aria-label="anchor" href="#i-want-a-different-template"></a>
+<h2 id="acknowledgements">Acknowledgements<a class="anchor" aria-label="anchor" href="#acknowledgements"></a>
 </h2>
-<p>You can easily create your own template. Fork this repo and create a new pair of <code>&lt;my_template&gt;.R</code> and <code>&lt;my_template&gt;.dcf</code> files. <code>&lt;my_template&gt;.dcf</code> defines how your template is named and which options are shown when you select the template in the project wizard. <code>&lt;my_template&gt;.R</code> defines what happens when the template is used. Have a look at <code>standard_analysis.R</code> and <code>standard_analysis.dcf</code> for inspiration or check out the <a href="https://rstudio.github.io/rstudio-extensions/rstudio_project_templates.html" class="external-link">RStudio Extensions documentation</a>.</p>
+<p>This repository is very much built on the repository <a href="https://github.com/jonas-hag/analysistemplates" target="_blank" class="external-link">analysistemplates</a> by jonas-hag (Jonas Hagenberg).</p>
+<p>They should take all the credit for producing the core infrastructure of this package.</p>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="license">
 <h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li><a href="LICENSE.html">Full license</a></li>
-<li><small><a href="https://opensource.org/licenses/mit-license.php" class="external-link">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
+<li><small><a href="https://www.r-project.org/Licenses/GPL-3" class="external-link">GPL-3</a></small></li>
 </ul>
 </div>
 
@@ -146,6 +157,7 @@
 <h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
 <li>Jake Tufts <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0009-0008-3798-8805" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li>Jonas Hagenberg <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-1849-1106" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 <li><a href="authors.html">More about authors...</a></li>
 </ul>
 </div>
@@ -158,7 +170,7 @@
 
     <footer><div class="pkgdown-footer-left">
   <p></p>
-<p>Developed by Jake Tufts.</p>
+<p>Developed by Jake Tufts, Jonas Hagenberg.</p>
 </div>
 
 <div class="pkgdown-footer-right">
