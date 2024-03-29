@@ -9,14 +9,21 @@ Authors@R:
              comment = c(ORCID = "0009-0008-3798-8805")),
       person(given = "Ben",
              family = "Smith",
-             role = "cph"))
+             role = "ctb"),
+      person(given = "Jonas",
+             family = "Hagenberg",
+             role = c("aut"),
+             email = "jonas_hagenberg@psych.mpg.de",
+             comment = c(ORCID = "0000-0002-1849-1106")))
 Description: This package provides an RStudio template that starts a new RStudio
   project with a standard folder structure for DAU analysis and package projects.
-License: MIT + file LICENSE
 Encoding: UTF-8
+License: GPL-3
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.1
 Suggests: 
     renv
 Imports: 
-    usethis
+    usethis,
+    utils,
+    withr

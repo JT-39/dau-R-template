@@ -14,9 +14,9 @@ dau_proj_template(
 \arguments{
 \item{path}{path of the new project}
 
-\item{include_structure_for_pkg}{additional Analysis for publication folder}
+\item{include_structure_for_pkg}{additional structure for package development}
 
-\item{include_github_gitignore}{should a gitingore file be created}
+\item{include_github_gitignore}{should a strict gitingore file for GitHub be created}
 
 \item{...}{additional parameters, currently not used}
 }
