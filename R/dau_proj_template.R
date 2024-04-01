@@ -45,10 +45,18 @@ dau_proj_template <- function(
   dir.create(paste0(path, "/01_Data/01_Raw"))
   dir.create(paste0(path, "/01_Data/02_Clean"))
   
-  dir.create(paste0(path, "/R"))
+  withr::with_dir(path, {
+    usethis::use_r(name = "load_data.R", open = FALSE)
+    usethis::use_r(name = "helpers.R", open = FALSE)
+  })
   dir.create(paste0(path, "/R/src"))
-  file.create(paste0(path, "/R/load_data.R"))
-  file.create(paste0(path, "/R/helpers.R"))
+  help_text <- c(paste0('# Your functions can go here. Then, when you want to ',
+                        'call those functions, run\n',
+                        '# `source("R/helpers.R")` at the start of your script.\n',
+                        'print("Your scripts and functions should be in the R ',
+                        'folder.")'
+                        ))
+  writeLines(help_text, "R/helpers.R")
   
   withr::with_dir(path, {
     usethis::use_testthat()
