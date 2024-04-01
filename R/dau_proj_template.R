@@ -9,6 +9,7 @@
 #' @importFrom utils installed.packages
 #' @importFrom withr with_dir
 #' @importFrom usethis create_package create_project use_testthat use_test
+#' @importFrom here here
 #' @export
 dau_proj_template <- function(
     path,
@@ -56,7 +57,7 @@ dau_proj_template <- function(
                         'print("Your scripts and functions should be in the R ',
                         'folder.")'
                         ))
-  writeLines(help_text, "R/helpers.R")
+  writeLines(help_text, here::here("R/helpers.R"))
   
   withr::with_dir(path, {
     usethis::use_testthat()

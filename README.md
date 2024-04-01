@@ -1,4 +1,4 @@
-# The dauRtemplate package
+# dauRtemplate <img src="man/figures/logo.png" align="right" height="139" alt="" />
 
 The RStudio projects of your colleagues all have a different structure? It is
 difficult to navigate and understand others' projects? Or even your own project
@@ -12,7 +12,9 @@ start a new project in RStudio, this package provides the standard folder struct
 directly in your code editor. Also, it can help you improving reproducibility by
 using git and `renv`.
 
-![folder structure of the template](man/figures/overview_folder_structure.png)
+![(Folder structure of the template)](man/figures/overview_folder_structure.png)
+
+<br>
 
 ## Installation
 
@@ -28,7 +30,9 @@ To create a new project with the folder structure shown below, follow these step
 2.  Restart RStudio
 3.  When creating a new RStudio project with the "New directory" option, choose "DAU project template"
 
-    ![RStudio Project Wizard showing the "Standard analysis template" option](man/figures/project_wizard_with_template.png)
+    ![(RStudio Project Wizard showing the "DAU project template" option)](man/figures/project_wizard_with_template.png)
+
+<br>    
 
 4.  During initialization you can select if you want to include a package structure 
 (check "Include folders and files required to build a R package (recommended).")
@@ -71,6 +75,7 @@ A new project contains the following folder structure:
 |-- .Rprofile
 |-- renv                        
 ```
+
 ## Planned features
 
 - Collaboration with DAU team to agree on folder and file structure.
