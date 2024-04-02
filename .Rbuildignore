@@ -1,6 +1,6 @@
 ^renv$
 ^renv\.lock$
-^dau-R-template-ext\.Rproj$
+^dau-R-template\.Rproj$
 ^\.Rproj\.user$
 ^LICENSE\.md$
 ^_pkgdown\.yml$
