@@ -2,6 +2,7 @@ Binding: dau_proj_template
 Title: DAU project template
 Subtitle: A template for DAU projects (currently supporting general anlysis and packages).
 OpenFiles: README.md
+Icon: logo.png
 
 Parameter: include_structure_for_pkg
 Widget: CheckboxInput
