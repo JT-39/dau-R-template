@@ -1,4 +1,4 @@
-#' Create standard analysis template for RStudio project
+#' Create standard DAU template for RStudio project
 #'
 #' @param path path of the new project
 #' @param include_structure_for_pkg additional structure for package development
@@ -8,8 +8,8 @@
 #' @return no return values, just the folders and README are created
 #' @importFrom utils installed.packages
 #' @importFrom withr with_dir
-#' @importFrom usethis create_package create_project use_testthat use_test
-#' @importFrom here here
+#' @importFrom usethis create_package create_project use_testthat use_test 
+#' @importFrom usethis proj_set
 #' @export
 dau_proj_template <- function(
     path,
@@ -38,6 +38,7 @@ dau_proj_template <- function(
   } else {
     # ensure that the path exists
     usethis::create_project(path = path, open = FALSE)
+    usethis::proj_set(path)
   }
 
   
@@ -46,10 +47,9 @@ dau_proj_template <- function(
   dir.create(paste0(path, "/01_Data/01_Raw"))
   dir.create(paste0(path, "/01_Data/02_Clean"))
   
-  withr::with_dir(path, {
-    usethis::use_r(name = "load_data.R", open = FALSE)
-    usethis::use_r(name = "helpers.R", open = FALSE)
-  })
+  
+  usethis::use_r(name = "load_data.R", open = FALSE)
+  usethis::use_r(name = "helpers.R", open = FALSE)
   dir.create(paste0(path, "/R/src"))
   help_text <- c(paste0('# Your functions can go here. Then, when you want to ',
                         'call those functions, run\n',
@@ -57,13 +57,12 @@ dau_proj_template <- function(
                         'print("Your scripts and functions should be in the R ',
                         'folder.")'
                         ))
-  writeLines(help_text, here::here("R/helpers.R"))
+  writeLines(help_text, paste0(path, "/R/helpers.R"))
   
-  withr::with_dir(path, {
-    usethis::use_testthat()
-    usethis::use_test("load_data.R")
-    usethis::use_test("helpers.R")
-  })
+  
+  usethis::use_testthat()
+  usethis::use_test("load_data.R", open = FALSE)
+  usethis::use_test("helpers.R", open = FALSE)
 
   
   dir.create(paste0(path, "/02_Analysis"))

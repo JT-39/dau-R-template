@@ -22,9 +22,10 @@ License: GPL-3
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.1
 Suggests: 
-    renv
+    testthat,
+    renv,
+    waldo
 Imports: 
-    here,
     usethis,
     utils,
     withr

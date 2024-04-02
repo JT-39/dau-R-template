@@ -11,7 +11,9 @@
 # ## To check the package
 # devtools::check()
 # 
-# 
+# ## Load the package locally
+# devtools::load_all() 
+#
 # ## Build the package
 # devtools::build()
 # 
@@ -24,3 +26,9 @@
 # 
 # # Add favicon
 # pkgdown::build_favicons()
+#
+#
+# ## Add testthat to Suggests in DESCRIPTION
+#
+# ## May need to add library(waldo) to tests/testthat.R
+

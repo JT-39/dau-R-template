@@ -2,7 +2,7 @@
 % Please edit documentation in R/dau_proj_template.R
 \name{dau_proj_template}
 \alias{dau_proj_template}
-\title{Create standard analysis template for RStudio project}
+\title{Create standard DAU template for RStudio project}
 \usage{
 dau_proj_template(
   path,
@@ -24,5 +24,5 @@ dau_proj_template(
 no return values, just the folders and README are created
 }
 \description{
-Create standard analysis template for RStudio project
+Create standard DAU template for RStudio project
 }
