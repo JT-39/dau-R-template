@@ -79,6 +79,7 @@ A new project contains the following folder structure:
 ## Planned features
 
 - Collaboration with DAU team to agree on folder and file structure.
+- Explain why this folder structure differs to template suggested.
 - Further testing and documentation of the package.
 - More support for a package folder structure.
 - Integration with QA (automated QA document).
