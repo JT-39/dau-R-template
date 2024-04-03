@@ -31,4 +31,16 @@
 # ## Add testthat to Suggests in DESCRIPTION
 #
 # ## May need to add library(waldo) to tests/testthat.R
+#
+#
+# ## Auto adding files using {usethat}
+# # Files in the R/ folder
+# usethat::use_r("file_name")
+#
+# # Setup empty {testthat} folder structure
+# usethis::use_testthat()
+#
+# # Setup corresponding test files to function file in R/
+# usethis::use_test("file_name")
+
 
