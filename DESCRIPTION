@@ -1,6 +1,6 @@
 Package: dauRtemplate
 Title: Creates a standard folder structure for DAU projects in RStudio
-Version: 0.1.0.9003
+Version: 0.1.0.9004
 Authors@R: 
     c(person(given = "Jake",
              family = "Tufts",
