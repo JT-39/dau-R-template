@@ -180,6 +180,8 @@ dau_proj_template <- function(
   if (requireNamespace("renv", quietly = TRUE)) {
     renv::init(project = normalizePath(path),
                bare = TRUE)
+    renv::install(rebuild = TRUE, prompt = FALSE)
+    renv::snapshot()
   } else {
     warning(
       paste0("renv couldn't be used as the `renv` package is not installed.",
