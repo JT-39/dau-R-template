@@ -6,6 +6,7 @@
 \usage{
 dau_proj_template(
   path,
+  init_renv = TRUE,
   include_structure_for_pkg,
   include_github_gitignore,
   ...
@@ -13,6 +14,8 @@ dau_proj_template(
 }
 \arguments{
 \item{path}{path of the new project}
+
+\item{init_renv}{boolean of whether to initiate renv in the project (set to true)}
 
 \item{include_structure_for_pkg}{additional structure for package development}
 

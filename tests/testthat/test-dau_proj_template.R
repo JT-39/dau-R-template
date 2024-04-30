@@ -7,6 +7,7 @@ test_that("Basic Functionality Test", {
     
     # Call the function with a valid path
     dau_proj_template(path = temp_dir, 
+                      init_renv = FALSE,
                       include_structure_for_pkg = FALSE, 
                       include_github_gitignore = FALSE)
     

@@ -1,3 +1,8 @@
+# Libraries needed to build a package
+# library(usethis)
+# library(devtools)
+# library(pkgdown)
+
 # # Useful functions to call while building a package
 # 
 # ## To update the package documentation on new packages being used
@@ -31,4 +36,16 @@
 # ## Add testthat to Suggests in DESCRIPTION
 #
 # ## May need to add library(waldo) to tests/testthat.R
+#
+#
+# ## Auto adding files using {usethat}
+# # Files in the R/ folder
+# usethat::use_r("file_name")
+#
+# # Setup empty {testthat} folder structure
+# usethis::use_testthat()
+#
+# # Setup corresponding test files to function file in R/
+# usethis::use_test("file_name")
+
 
