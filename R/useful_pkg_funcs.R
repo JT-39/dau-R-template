@@ -1,3 +1,8 @@
+# Libraries needed to build a package
+# library(usethis)
+# library(devtools)
+# library(pkgdown)
+
 # # Useful functions to call while building a package
 # 
 # ## To update the package documentation on new packages being used

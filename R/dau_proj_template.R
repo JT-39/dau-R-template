@@ -1,6 +1,7 @@
 #' Create standard DAU template for RStudio project
 #'
 #' @param path path of the new project
+#' @param init_renv boolean of whether to initiate renv in the project (set to true)
 #' @param include_structure_for_pkg additional structure for package development
 #' @param include_github_gitignore should a strict gitingore file for GitHub be created
 #' @param ... additional parameters, currently not used
@@ -13,6 +14,7 @@
 #' @export
 dau_proj_template <- function(
     path,
+    init_renv=TRUE,
     include_structure_for_pkg,
     include_github_gitignore,
     ...) {
@@ -177,11 +179,11 @@ dau_proj_template <- function(
   writeLines(content, con = file.path(path, "README.md"))
   
   # initialise renv
-  if (requireNamespace("renv", quietly = TRUE)) {
-    renv::init(project = normalizePath(path),
+  if (requireNamespace("renv", quietly = TRUE) & init_renv) {
+    renv::init(project = path,
                bare = TRUE)
-    renv::install(rebuild = TRUE, prompt = FALSE)
-    renv::snapshot()
+    renv::snapshot(project = path, prompt = FALSE,
+                   update = TRUE, packages = list("rmarkdown", "testthat"))
   } else {
     warning(
       paste0("renv couldn't be used as the `renv` package is not installed.",
@@ -190,3 +192,4 @@ dau_proj_template <- function(
     )
   }
 }
+
