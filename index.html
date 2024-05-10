@@ -33,7 +33,7 @@
     
     <a class="navbar-brand me-2" href="index.html">dauRtemplate</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0.9007</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0.9008</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -62,7 +62,12 @@
 <img src="logo.png" class="logo" alt=""><h1 id="daurtemplate-">dauRtemplate <a class="anchor" aria-label="anchor" href="#daurtemplate-"></a>
 </h1>
 </div>
-<p>The RStudio projects of your colleagues all have a different structure? It is difficult to navigate and understand others’ projects? Or even your own project from a few months/years ago? Therefore, it is useful if you all agree on a standard folder structure for your analysis. Templates can help to enforce this.</p>
+<ul>
+<li><p>The RStudio projects of your colleagues all have a different structure?</p></li>
+<li><p>It is difficult to navigate and understand others’ projects?</p></li>
+<li><p>Or even your own project from a few months/years ago?</p></li>
+</ul>
+<p>If so… it may be useful if you all agreed on a standard folder structure for your analysis. Templates can help to enforce this.</p>
 <p>This package provides one standard project folder structure template for R projects geared towards DAU analysis use cases. Whenever you start a new project in RStudio, this package provides the standard folder structure directly in your code editor. Also, it can help you improving reproducibility by using git and <code>renv</code>.</p>
 <div class="float">
 <img src="reference/figures/overview_folder_structure.png" alt="(Folder structure of the template)"><div class="figcaption">(Folder structure of the template)</div>
@@ -72,22 +77,20 @@
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"JT-39/dau-R-template-ext"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"JT-39/dauRtemplate"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
 </h2>
 <p>To create a new project with the folder structure shown below, follow these steps:</p>
 <ol style="list-style-type: decimal">
-<li><p>Install the package</p></li>
-<li><p>Restart RStudio</p></li>
-<li>
-<p>When creating a new RStudio project with the “New directory” option, choose “DAU project template”</p>
+<li>Install the package</li>
+<li>Restart RStudio</li>
+<li>When creating a new RStudio project with the “New directory” option, choose “DAU project template”</li>
+</ol>
 <div class="float">
 <img src="reference/figures/project_wizard_with_template.png" alt="(RStudio Project Wizard showing the “DAU project template” option)"><div class="figcaption">(RStudio Project Wizard showing the “DAU project template” option)</div>
 </div>
-</li>
-</ol>
 <p><br></p>
 <ol start="4" style="list-style-type: decimal">
 <li>During initialization you can select if you want to include a package structure (check “Include folders and files required to build a R package (recommended).”)</li>
@@ -134,6 +137,8 @@
 <h2 id="planned-features">Planned features<a class="anchor" aria-label="anchor" href="#planned-features"></a>
 </h2>
 <ul>
+<li>Fix issue where selecting open in a new session still opens project in the current session.</li>
+<li>Add a ad-hoc project folder structure for very small projects (no formal documentation, and more, needed).</li>
 <li>Collaboration with DAU team to agree on folder and file structure.</li>
 <li>Explain why this folder structure differs to template suggested.</li>
 <li>Further testing and documentation of the package.</li>
