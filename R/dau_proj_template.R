@@ -11,6 +11,8 @@
 #' @importFrom withr with_dir
 #' @importFrom usethis create_package create_project use_testthat use_test 
 #' @importFrom usethis proj_set
+#' @import testthat
+#' @import renv
 #' @export
 dau_proj_template <- function(
     path,
@@ -68,7 +70,6 @@ dau_proj_template <- function(
 
   
   dir.create(paste0(path, "/02_Analysis"))
-  file.create(paste0(path, "/02_Analysis/analysis.Rmd"))
   file.create(paste0(path, "/02_Analysis/analysis.qmd"))
   
   dir.create(paste0(path, "/03_Documentation"))
@@ -181,9 +182,9 @@ dau_proj_template <- function(
   # initialise renv
   if (requireNamespace("renv", quietly = TRUE) & init_renv) {
     renv::init(project = path,
-               bare = TRUE)
+               bare = TRUE, load = FALSE)
     renv::snapshot(project = path, prompt = FALSE,
-                   update = TRUE, packages = list("rmarkdown", "testthat"))
+                   update = TRUE, packages = list("renv", "testthat"))
   } else {
     warning(
       paste0("renv couldn't be used as the `renv` package is not installed.",
