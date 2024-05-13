@@ -4,6 +4,12 @@ Subtitle: A template for DAU projects (currently supporting general anlysis and 
 OpenFiles: README.md
 Icon: logo.png
 
+Parameter: create_adhoc_proj
+Widget: CheckboxInput
+Label: Ad-hoc project folder structure.
+Default: On
+Position: left
+
 Parameter: include_structure_for_pkg
 Widget: CheckboxInput
 Label: Include folders and files required to build a R package (recommended).
