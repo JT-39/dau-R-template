@@ -3,6 +3,7 @@
 #' @param path path of the new project
 #' @param init_renv boolean of whether to initiate renv in the project (set to true)
 #' @param include_structure_for_pkg additional structure for package development
+#' @param create_adhoc_proj should the folder structure be for an ad-hoc project
 #' @param include_github_gitignore should a strict gitingore file for GitHub be created
 #' @param ... additional parameters, currently not used
 #'
@@ -12,12 +13,15 @@
 #' @importFrom usethis create_package create_project use_testthat use_test 
 #' @importFrom usethis proj_set
 #' @import testthat
+#' @import rmarkdown
 #' @import renv
+#' @import stringr
 #' @export
 dau_proj_template <- function(
     path,
     init_renv=TRUE,
     include_structure_for_pkg,
+    create_adhoc_proj,
     include_github_gitignore,
     ...) {
   
@@ -44,12 +48,6 @@ dau_proj_template <- function(
     usethis::create_project(path = path, open = FALSE)
     usethis::proj_set(path)
   }
-
-  
-  # create folder structure
-  dir.create(paste0(path, "/01_Data"))
-  dir.create(paste0(path, "/01_Data/01_Raw"))
-  dir.create(paste0(path, "/01_Data/02_Clean"))
   
   
   usethis::use_r(name = "load_data.R", open = FALSE)
@@ -60,30 +58,41 @@ dau_proj_template <- function(
                         '# `source("R/helpers.R")` at the start of your script.\n',
                         'print("Your scripts and functions should be in the R ',
                         'folder.")'
-                        ))
+  ))
   writeLines(help_text, paste0(path, "/R/helpers.R"))
   
   
   usethis::use_testthat()
-  usethis::use_test("load_data.R", open = FALSE)
   usethis::use_test("helpers.R", open = FALSE)
 
   
-  dir.create(paste0(path, "/02_Analysis"))
-  file.create(paste0(path, "/02_Analysis/analysis.qmd"))
-  
-  dir.create(paste0(path, "/03_Documentation"))
-  dir.create(paste0(path, "/03_Documentation/01_text"))
-  dir.create(paste0(path, "/03_Documentation/02_figures"))
-  
-  dir.create(paste0(path, "/04_Outputs"))
-  dir.create(paste0(path, "/04_Outputs/01_results"))
-  dir.create(paste0(path, "/04_Outputs/02_figures"))
-  dir.create(paste0(path, "/04_Outputs/03_tables"))
-  
-  dir.create(paste0(path, "/05_Misc"))
-  dir.create(paste0(path, "/05_Misc/01_public"))
-  dir.create(paste0(path, "/05_Misc/02_priv"))
+  if(create_adhoc_proj) {
+    # create ad-hoc project folder structure
+    dir.create(paste0(path, "/_analysis/"))
+    file.create(paste0(path, "/_analysis/analysis.qmd"))
+    dir.create(paste0(path, "/_output/"))
+  } else {
+    # create large folder structure
+    dir.create(paste0(path, "/01_data"))
+    dir.create(paste0(path, "/01_data/01_raw"))
+    dir.create(paste0(path, "/01_data/02_clean"))
+    
+    dir.create(paste0(path, "/02_analysis"))
+    file.create(paste0(path, "/02_analysis/analysis.qmd"))
+    
+    dir.create(paste0(path, "/03_documentation"))
+    dir.create(paste0(path, "/03_documentation/01_text"))
+    dir.create(paste0(path, "/03_documentation/02_figures"))
+    
+    dir.create(paste0(path, "/04_outputs"))
+    dir.create(paste0(path, "/04_outputs/01_results"))
+    dir.create(paste0(path, "/04_outputs/02_figures"))
+    dir.create(paste0(path, "/04_outputs/03_tables"))
+    
+    dir.create(paste0(path, "/05_misc"))
+    dir.create(paste0(path, "/05_misc/01_public"))
+    dir.create(paste0(path, "/05_misc/02_priv"))
+  }
   
   # .gitignore for Azure DevOps
   gitignore_content <- c(
@@ -127,10 +136,12 @@ dau_proj_template <- function(
     "Please give an overview what you do in this project and how to navigate it.",
     "",
     "## Introduction",
-    "TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project.",
+    "TODO: Give a short introduction of your project.",
+    "Let this section explain the objectives or the motivation behind this project.",
     "",
     "## Getting Started",
-    "TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:",
+    "TODO: Guide users through getting your code up and running on their own system. ",
+    "In this section you can talk about:",
     "1.	Installation process",
     "2.	Software dependencies",
     "3.	Latest releases",
@@ -143,11 +154,13 @@ dau_proj_template <- function(
     "TODO: Explain how other users and developers can contribute to make your code better.",
     "",
     "## Git integration",
-    "If you want to use git with your project (you should!), please do the following steps (replace `<name of your repository>` with the actual name):",
+    "If you want to use git with your project (you should!), ",
+    "please do the following steps (replace `<name of your repository>` with the actual name):",
     "",
     "1.  Go to your git repository provider (GitHub/Azure DevOps) and create a new repository",
     "2.  DON'T check 'Add a README file'",
-    "3.  Go to the Terminal within RStudio and type the following commands (for the URL, e.g. https://github.com):",
+    "3.  Go to the Terminal within RStudio and type the following commands ",
+    "(for the URL, e.g. https://github.com):",
     "",
     "```bash",
     "git init",
@@ -157,7 +170,8 @@ dau_proj_template <- function(
     "",
     "4.  Restart RStudio",
     "5.  Type in the R terminal `bash git add .` to add all files to the commit",
-    '5.  Type in the R terminal `bash git commit -m "Your commit message (initial commit)"` to commit those files with a message.',
+    '5.  Type in the R terminal `bash git commit -m ', 
+    '"Your commit message (initial commit)"` to commit those files with a message.',
     "6.  In the terminal, execute the following command:",
     "",
     "```bash",
@@ -166,15 +180,13 @@ dau_proj_template <- function(
     "",
     "7.  For the following commits, repeat this process",
     "",
-    "Please note that the following directories and files are not tracked by git by default (but you can change it in the .gitignore file):",
-    "",
-    "-   01_Data",
-    "",
-    "NOTE: For sharing content on GitHub you should have ticked the 'Create a .gitignore file for GitHub' checkbox when creating the projetc.",
+    "NOTE: For sharing content on GitHub you should have ticked the ",
+    "'Create a .gitignore file for GitHub' checkbox when creating the project.",
     "This will give create a strict .gitignore which is suitable for sharing code to the public.",
     "Please also review to ensure no sensitive information is shared.",
     "",
-    "For more information about the integration of git and RStudio, check out https://happygitwithr.com."
+    "For more information about the integration of git and RStudio, ",
+    "check out https://happygitwithr.com."
   )
   content <- paste0(content, collapse = "\n")
   writeLines(content, con = file.path(path, "README.md"))
@@ -184,7 +196,8 @@ dau_proj_template <- function(
     renv::init(project = path,
                bare = TRUE, load = FALSE)
     renv::snapshot(project = path, prompt = FALSE,
-                   update = TRUE, packages = list("renv", "testthat"))
+                   update = TRUE, packages = list("rmarkdown", "testthat",
+                                                  "renv", "stringr"))
   } else {
     warning(
       paste0("renv couldn't be used as the `renv` package is not installed.",
