@@ -8,6 +8,7 @@ dau_proj_template(
   path,
   init_renv = TRUE,
   include_structure_for_pkg,
+  create_adhoc_proj,
   include_github_gitignore,
   ...
 )
@@ -18,6 +19,8 @@ dau_proj_template(
 \item{init_renv}{boolean of whether to initiate renv in the project (set to true)}
 
 \item{include_structure_for_pkg}{additional structure for package development}
+
+\item{create_adhoc_proj}{should the folder structure be for an ad-hoc project}
 
 \item{include_github_gitignore}{should a strict gitingore file for GitHub be created}
 
