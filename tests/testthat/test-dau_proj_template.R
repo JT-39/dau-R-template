@@ -9,20 +9,18 @@ test_that("Basic Functionality Test", {
     dau_proj_template(path = temp_dir, 
                       init_renv = FALSE,
                       include_structure_for_pkg = FALSE, 
+                      create_adhoc_proj = FALSE,
                       include_github_gitignore = FALSE)
     
     # Verify that the project structure is created correctly
-    expect_true(dir.exists(paste0(temp_dir, "/01_Data")))
-    expect_true(dir.exists(paste0(temp_dir, "/01_Data/01_Raw")))
-    expect_true(dir.exists(paste0(temp_dir, "/01_Data/02_Clean")))
+    expect_true(dir.exists(paste0(temp_dir, "/01_data")))
+    expect_true(dir.exists(paste0(temp_dir, "/01_data/01_raw")))
+    expect_true(dir.exists(paste0(temp_dir, "/01_data/02_clean")))
 
     # Function files
-    expect_true(file.exists(paste0(temp_dir, "/R/load_data.R")))
     expect_true(file.exists(paste0(temp_dir, "/R/helpers.R")))
 
     # Test files
-    expect_true(file.exists(paste0(temp_dir,
-                                   "/tests/testthat/test-load_data.R")))
     expect_true(file.exists(paste0(temp_dir,
                                    "/tests/testthat/test-helpers.R")))
     
