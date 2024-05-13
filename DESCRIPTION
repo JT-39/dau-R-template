@@ -29,4 +29,6 @@ Imports:
     utils,
     withr,
     testthat,
-    renv
+    renv,
+    rmarkdown,
+    stringr

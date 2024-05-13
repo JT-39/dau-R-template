@@ -2,6 +2,8 @@
 
 export(dau_proj_template)
 import(renv)
+import(rmarkdown)
+import(stringr)
 import(testthat)
 importFrom(usethis,create_package)
 importFrom(usethis,create_project)
